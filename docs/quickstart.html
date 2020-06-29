@@ -149,8 +149,11 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#quick-start" id="quick-start">Quick start</a></h1>
-<p>Semaphore has been tested with Node 11.14.0 and Node 12 LTE. Use
-<a href="https://github.com/nvm-sh/nvm"><code>nvm</code></a> to manage your Node version.</p>
+<p>Semaphore has been tested with Node 11.14.0. It will run with Node 12 LTE but
+we highly recommend using Node 11.14.0 if you wish to develop on its source
+code, as one of its dependencies, <code>script</code>, cannot compile when if you use Node
+12. </p>
+<p>Use <a href="https://github.com/nvm-sh/nvm"><code>nvm</code></a> to manage your Node version.</p>
 <p>Clone this repository, install dependencies, and build the source code:</p>
 <pre><code class="language-bash">git clone git@github.com:kobigurk/semaphore.git &amp;&amp; \
 cd semaphore &amp;&amp; \
@@ -158,6 +161,9 @@ npm i &amp;&amp; \
 npm run bootstrap &amp;&amp; \
 npm run build
 </code></pre>
+<p><strong>Note</strong>: we use <code>lerna</code> to manage the <code>circuits</code>, <code>config</code>, and <code>contracts</code>
+subpackages. Do not run <code>npm install</code> within any of these directories. Instead,
+just run <code>npm run bootstrap</code> in the main directory.</p>
 <p>Next, either download the compiled zk-SNARK circuit, proving key, and
 verification key (note that these keys are for testing purposes, and not for
 production, as there is no certainty that the toxic waste was securely
@@ -165,13 +171,11 @@ discarded).</p>
 <p>To download the circuit, proving key, and verification key, run:</p>
 <pre><code class="language-bash"># Start from the base directory
 
-cd circuits &amp;&amp; \
 ./circuits/scripts/download_snarks.sh
 </code></pre>
 <p>To generate the above files locally instead, run:</p>
 <pre><code class="language-bash"># Start from the base directory
 
-cd circuits &amp;&amp; \
 ./circuits/scripts/build_snarks.sh
 </code></pre>
 <p>This process should take about 45 minutes.</p>

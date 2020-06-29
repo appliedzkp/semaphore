@@ -16,6 +16,10 @@ verification on-chain. The zero-knowledge components work off-chain to allow
 the user to generate proofs, which allow the smart contract to update its state
 if these proofs are valid.
 
+For a formal description of Semaphore and its underlying cryptographic
+mechanisms, also see this document
+[here](https://github.com/appliedzkp/semaphore/tree/master/spec).
+
 Semaphore is designed for smart contract and dApp developers, not end users.
 Developers should abstract its features away in order to provide user-friendly
 privacy.

@@ -7,5 +7,7 @@ as well as relevant circuits in
 [circomlib](https://github.com/iden3/circomlib), which contains components
 which the Semaphore zk-SNARK uses.
 
-All security and performance issues have been fixed. The full audit report will
-be available soon.
+The summary of the audit results can be found
+[here](https://github.com/appliedzkp/semaphore/tree/master/audit). After three
+rounds of fixes, all security and performance issues were fixed, and the few
+remaining issues are minor and do not affect security.

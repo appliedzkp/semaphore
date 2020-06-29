@@ -50,8 +50,9 @@ circuit as described below:
 
 ### The zk-SNARK circuit
 
-The [semaphore-base.circom](./circuits/circom/semaphore-base.circom) circuit
-helps to prove the following:
+The
+[semaphore-base.circom](https://github.com/appliedzkp/semaphore/blob/master/circuits/circom/semaphore-base.circom)
+circuit helps to prove the following:
 
 ### That the identity commitment exists in the Merkle tree
 

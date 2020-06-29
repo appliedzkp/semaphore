@@ -165,6 +165,9 @@ tandem. The Semaphore smart contract handles state, permissions, and proof
 verification on-chain. The zero-knowledge components work off-chain to allow
 the user to generate proofs, which allow the smart contract to update its state
 if these proofs are valid.</p>
+<p>For a formal description of Semaphore and its underlying cryptographic
+mechanisms, also see this document
+<a href="https://github.com/appliedzkp/semaphore/tree/master/spec">here</a>.</p>
 <p>Semaphore is designed for smart contract and dApp developers, not end users.
 Developers should abstract its features away in order to provide user-friendly
 privacy.</p>
@@ -276,8 +279,9 @@ broadcast.</li>
 <p>To zk-SNARK proof must satisfy the constraints created by Semaphore's zk-SNARK
 circuit as described below:</p>
 <h3><a class="header" href="#the-zk-snark-circuit" id="the-zk-snark-circuit">The zk-SNARK circuit</a></h3>
-<p>The <a href="./circuits/circom/semaphore-base.circom">semaphore-base.circom</a> circuit
-helps to prove the following:</p>
+<p>The
+<a href="https://github.com/appliedzkp/semaphore/blob/master/circuits/circom/semaphore-base.circom">semaphore-base.circom</a>
+circuit helps to prove the following:</p>
 <h3><a class="header" href="#that-the-identity-commitment-exists-in-the-merkle-tree" id="that-the-identity-commitment-exists-in-the-merkle-tree">That the identity commitment exists in the Merkle tree</a></h3>
 <p><strong>Private inputs:</strong></p>
 <ul>
@@ -344,8 +348,11 @@ and roughly halves the proving time. Note, however, that the Poseidon-related
 circuits and EVM bytecode generator have not been audited, so use it with
 caution. To use it, checkout the <code>feat/poseidon</code> branch of this repository.</p>
 <h1><a class="header" href="#quick-start" id="quick-start">Quick start</a></h1>
-<p>Semaphore has been tested with Node 11.14.0 and Node 12 LTE. Use
-<a href="https://github.com/nvm-sh/nvm"><code>nvm</code></a> to manage your Node version.</p>
+<p>Semaphore has been tested with Node 11.14.0. It will run with Node 12 LTE but
+we highly recommend using Node 11.14.0 if you wish to develop on its source
+code, as one of its dependencies, <code>script</code>, cannot compile when if you use Node
+12. </p>
+<p>Use <a href="https://github.com/nvm-sh/nvm"><code>nvm</code></a> to manage your Node version.</p>
 <p>Clone this repository, install dependencies, and build the source code:</p>
 <pre><code class="language-bash">git clone git@github.com:kobigurk/semaphore.git &amp;&amp; \
 cd semaphore &amp;&amp; \
@@ -353,6 +360,9 @@ npm i &amp;&amp; \
 npm run bootstrap &amp;&amp; \
 npm run build
 </code></pre>
+<p><strong>Note</strong>: we use <code>lerna</code> to manage the <code>circuits</code>, <code>config</code>, and <code>contracts</code>
+subpackages. Do not run <code>npm install</code> within any of these directories. Instead,
+just run <code>npm run bootstrap</code> in the main directory.</p>
 <p>Next, either download the compiled zk-SNARK circuit, proving key, and
 verification key (note that these keys are for testing purposes, and not for
 production, as there is no certainty that the toxic waste was securely
@@ -360,13 +370,11 @@ discarded).</p>
 <p>To download the circuit, proving key, and verification key, run:</p>
 <pre><code class="language-bash"># Start from the base directory
 
-cd circuits &amp;&amp; \
 ./circuits/scripts/download_snarks.sh
 </code></pre>
 <p>To generate the above files locally instead, run:</p>
 <pre><code class="language-bash"># Start from the base directory
 
-cd circuits &amp;&amp; \
 ./circuits/scripts/build_snarks.sh
 </code></pre>
 <p>This process should take about 45 minutes.</p>
@@ -735,8 +743,10 @@ Consulting</a> to audit the source code of Semaphore
 as well as relevant circuits in
 <a href="https://github.com/iden3/circomlib">circomlib</a>, which contains components
 which the Semaphore zk-SNARK uses.</p>
-<p>All security and performance issues have been fixed. The full audit report will
-be available soon.</p>
+<p>The summary of the audit results can be found
+<a href="https://github.com/appliedzkp/semaphore/tree/master/audit">here</a>. After three
+rounds of fixes, all security and performance issues were fixed, and the few
+remaining issues are minor and do not affect security.</p>
 <h1><a class="header" href="#credits" id="credits">Credits</a></h1>
 <ul>
 <li>Barry WhiteHat</li>
