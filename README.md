@@ -1,4 +1,4 @@
-# Semaphore
+![Semaphore](/assets/Semaphore_black.png "Semaphore")
 
 Semaphore is a zero-knowledge gadget which allows users to prove their
 membership of a set without revealing their original identity. At the same
